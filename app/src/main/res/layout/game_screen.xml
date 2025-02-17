@@ -2,7 +2,97 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:gravity="center">
 
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_pirates"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="@drawable/ic_x"/>
+            <RadioButton android:id="@+id/radio_ninjas"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="@drawable/ic_o"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="turn: x"/>
+
+        <Button
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_x"/>
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="411dp"
+        android:columnCount="3"
+        android:rowCount="3">
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
+
+
+
+    </GridLayout>
+
+    <LinearLayout
+        android:paddingTop="25dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="win"
+            android:background="#FF0000"
+            android:gravity="center"
+            android:layout_marginHorizontal="25dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="win"
+            android:background="#FF0000"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="win"
+            android:background="#FF0000"
+            android:gravity="center"
+            android:layout_marginHorizontal="25dp"/>
+
+
+
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
