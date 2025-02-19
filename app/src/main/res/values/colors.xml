@@ -8,4 +8,5 @@
     <color name="foreground">#A8BEC9</color>
     <color name="ixs">#31C4BE</color>
     <color name="igul">#F2B237</color>
+    <color name="blackA">#60000000</color>
 </resources>
