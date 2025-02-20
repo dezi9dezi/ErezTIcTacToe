@@ -22,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/username"/>
+        app:layout_constraintBottom_toTopOf="@id/username"
+        android:fontFamily="@font/transformers"/>
 
     <EditText
         android:id="@+id/username"
@@ -39,7 +40,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/transformers"/>
 
     <EditText
         android:id="@+id/password"
@@ -56,7 +58,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="60dp"/>
+        android:layout_marginHorizontal="60dp"
+        android:fontFamily="@font/transformers"/>
 
     <Button
         android:id="@+id/loginBTN"
@@ -69,7 +72,8 @@
         app:layout_constraintTop_toBottomOf="@id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="60dp"/>
+        android:layout_marginHorizontal="60dp"
+        android:fontFamily="@font/transformers"/>
 
     <TextView
         android:id="@+id/forgotPassword"
@@ -80,6 +84,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="25dp"/>
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/transformers"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

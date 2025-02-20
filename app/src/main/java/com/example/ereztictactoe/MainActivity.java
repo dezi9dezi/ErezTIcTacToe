@@ -1,5 +1,6 @@
 package com.example.ereztictactoe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         String username = un.getText().toString();
         String password = pw.getText().toString();
         User u = dbh.addNewUser(new User(username,password));
-        //pass user to next screen
+        Intent i = new Intent(MainActivity.this, GameScreen.this);
+        i.putExtra("user", u);
     }
 }

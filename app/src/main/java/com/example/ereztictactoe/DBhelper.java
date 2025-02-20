@@ -55,7 +55,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public User getUser(String un, String pw) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + USERS_TABLE + " WHERE " + USER_USERNAME + " = " + un + " && " + USER_PASSWORD + " = " + pw, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + USERS_TABLE + " WHERE " + USER_USERNAME + " = ? AND " + USER_PASSWORD + " = ?", new String[]{un, pw});
         if (cursor.moveToFirst()) return new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
         return null;
     }
