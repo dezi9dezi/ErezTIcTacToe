@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -18,13 +17,20 @@ public class DBhelper extends SQLiteOpenHelper {
     private static final String USER_PASSWORD = "user_password";
     private static final String USER_ID = "user_id";
 
+    private static final String STATS_TABLE = "stats_table";
+    private static final String STATS_USER_ID = "stats_user_id";
+    private static final String STATS_WINS = "stats_wins";
+    private static final String STATS_LOSSES = "stats_losses";
+    private static final String STATS_DRAWS = "stats_draws";
+
     public DBhelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + USERS_TABLE +  " (" +  USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + USER_USERNAME + " TEXT," + USER_PASSWORD + " TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + USERS_TABLE + " (" +  USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + USER_USERNAME + " TEXT," + USER_PASSWORD + " TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + STATS_TABLE + " (" + STATS_USER_ID + " INTEGER, " + STATS_WINS + " INTEGER, " + STATS_LOSSES + " INTEGER, " + STATS_DRAWS + " INTEGER, FOREIGN KEY( " + STATS_USER_ID + " ) REFERENCES " + USERS_TABLE + "( " + USER_ID + " ))");
     }
 
     @Override
@@ -47,21 +53,41 @@ public class DBhelper extends SQLiteOpenHelper {
     }
 
     public User getUser(long id) {
+        User u = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + USERS_TABLE + " WHERE " + USER_ID + " = " + id, null);
-        if (cursor.moveToFirst()) return new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
-        return new User();
+        if (cursor.moveToFirst()) u = new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
+        cursor.close();
+        db.close();
+        return u;
     }
 
     public User getUser(String un, String pw) {
+        User u = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + USERS_TABLE + " WHERE " + USER_USERNAME + " = ? AND " + USER_PASSWORD + " = ?", new String[]{un, pw});
-        if (cursor.moveToFirst()) return new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
-        return null;
+        if (cursor.moveToFirst()) u = new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
+        cursor.close();
+        db.close();
+        return u;
     }
 
     public boolean removeUser(long id) {
         SQLiteDatabase db = getWritableDatabase();
-        return db.rawQuery("DELETE FROM " + USERS_TABLE + " WHERE " + USER_ID + " = " + id, null).moveToFirst();
+        Cursor cursor = db.rawQuery("DELETE FROM " + USERS_TABLE + " WHERE " + USER_ID + " = " + id, null);
+        boolean b = cursor.moveToFirst();
+        db.close();
+        cursor.close();
+        return b;
+    }
+
+    public boolean updateUser(User u, String newPassword) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(USER_PASSWORD, newPassword);
+        int num = db.update(USERS_TABLE, cv, USER_ID + " = ?", new String[]{ String.valueOf(u.getId()) } );
+        db.close();
+        return num==1;
     }
 }
+//font isnt case sensitive

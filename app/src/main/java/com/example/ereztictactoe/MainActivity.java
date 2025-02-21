@@ -1,16 +1,12 @@
 package com.example.ereztictactoe;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EditText un, pw;
@@ -38,14 +34,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void forgotPassword() {
-        //unique username, delete by username
+        Dialog fpDialog = new customDialog(MainActivity.this, dbh);
+        fpDialog.show();
     }
 
     private void login() {
         String username = un.getText().toString();
         String password = pw.getText().toString();
-        User u = dbh.addNewUser(new User(username,password));
-        Intent i = new Intent(MainActivity.this, GameScreen.this);
-        i.putExtra("user", u);
+        if (!username.isEmpty()&&!password.isEmpty()) {
+            User u = dbh.addNewUser(new User(username, password));
+            Intent i = new Intent(MainActivity.this, GameScreen.class);
+            i.putExtra("user", u);
+            startActivity(i);
+        }
     }
 }

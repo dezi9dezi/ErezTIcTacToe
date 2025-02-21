@@ -2,45 +2,73 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="@color/background">
     
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="0dp"
         android:layout_weight="2"
         android:layout_width="match_parent"
         android:gravity="center">
 
         <RadioGroup
-            android:layout_width="0dp"
+            android:id="@+id/playerSelector"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/radio_pirates"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@id/turn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <RadioButton android:id="@+id/x_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@drawable/ic_x"/>
-            <RadioButton android:id="@+id/radio_ninjas"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:button="@drawable/ic_x"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:translationX="24dp"
+                android:checked="true" />
+            <RadioButton android:id="@+id/o_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@drawable/ic_o"/>
+                android:button="@drawable/ic_o"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:translationX="24dp" />
         </RadioGroup>
 
         <TextView
-            android:layout_weight="1"
+            android:id="@+id/turn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="turn: x"/>
+            android:text="@string/turn"
+            app:drawableStartCompat="@drawable/ic_x"
+            app:drawableTint="@color/gray"
+            app:layout_constraintEnd_toStartOf="@id/restart"
+            app:layout_constraintStart_toEndOf="@id/playerSelector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="25sp"
+            android:fontFamily="@font/transformers"
+            android:background="@drawable/box_bg"
+            android:paddingTop="6dp"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/gray" />
 
         <Button
-            android:layout_weight="1"
+            android:id="@+id/restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_x"/>
+            android:drawableStart="@drawable/ic_x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/turn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
         android:layout_width="match_parent"

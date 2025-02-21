@@ -5,8 +5,11 @@
     <color name="gray">#999999</color>
     <color name="blueTheme">#3a78aa</color>
     <color name="background">#192A32</color>
+    <color name="box">#1F3540</color>
+    <color name="shadow">#FF102129</color>
     <color name="foreground">#A8BEC9</color>
     <color name="ixs">#31C4BE</color>
     <color name="igul">#F2B237</color>
     <color name="blackA">#60000000</color>
+    <color name="whiteA">#60FFFFFF</color>
 </resources>

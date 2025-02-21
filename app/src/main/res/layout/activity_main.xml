@@ -27,13 +27,13 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="match_parent"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:autofillHints="username"
         android:background="@drawable/rounded_bg"
         android:hint="@string/Username"
         android:inputType="text"
-        android:padding="10dp"
+        android:padding="13dp"
         android:textColor="@color/foreground"
         android:textColorHint="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/password"
@@ -45,13 +45,13 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="match_parent"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:autofillHints="password"
         android:background="@drawable/rounded_bg"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        android:padding="10dp"
+        android:padding="13dp"
         android:textColor="@color/foreground"
         android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,10 +63,10 @@
 
     <Button
         android:id="@+id/loginBTN"
-        android:layout_width="match_parent"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/foreground"
-        android:text="@string/Login"
+        android:text="@string/LOGIN"
         android:textColor="@color/background"
         app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
         app:layout_constraintTop_toBottomOf="@id/password"
@@ -80,11 +80,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ForgotPassword"
-        android:textColor="#999999"
+        android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="50dp"
         android:fontFamily="@font/transformers"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

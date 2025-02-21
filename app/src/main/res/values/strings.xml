@@ -4,4 +4,10 @@
     <string name="ForgotPassword">Forgot Password?</string>
     <string name="Password">Password</string>
     <string name="Username">Username</string>
+    <string name="LOGIN">LOGIN</string>
+    <string name="change_password">Change Password</string>
+    <string name="user_id">User ID</string>
+    <string name="new_password">new password</string>
+    <string name="update_password">Update Password</string>
+    <string name="turn">turn</string>
 </resources>
