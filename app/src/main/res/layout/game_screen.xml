@@ -57,35 +57,31 @@
             android:paddingBottom="10dp"
             android:textColor="@color/gray" />
 
-        <Button
+        <ImageButton
             android:id="@+id/restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_x"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/turn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/button_bg"
+            android:src="@drawable/ic_restart"
+            android:drawableTint="@color/gray"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="12dp"
+            android:paddingTop="8dp"
+            app:tint="@color/background"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
+        android:id="@+id/tttBoard"
         android:layout_width="match_parent"
         android:layout_height="411dp"
         android:columnCount="3"
         android:rowCount="3">
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-        <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/ic_x" android:layout_columnWeight="1" android:layout_rowWeight="1"/>
-
-
 
     </GridLayout>
 
