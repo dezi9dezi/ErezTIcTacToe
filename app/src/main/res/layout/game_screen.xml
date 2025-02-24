@@ -61,6 +61,7 @@
             android:id="@+id/restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/restart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/turn"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +82,8 @@
         android:layout_width="match_parent"
         android:layout_height="411dp"
         android:columnCount="3"
-        android:rowCount="3">
+        android:rowCount="3"
+        android:padding="30dp">
 
     </GridLayout>
 
@@ -95,23 +97,26 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="win"
-            android:background="#FF0000"
+            android:text="@string/wins"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/ixs"
             android:gravity="center"
             android:layout_marginHorizontal="25dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="win"
-            android:background="#FF0000"
+            android:text="@string/draws"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/gray"
             android:gravity="center"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="win"
-            android:background="#FF0000"
+            android:text="@string/losses"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/igul"
             android:gravity="center"
             android:layout_marginHorizontal="25dp"/>
 

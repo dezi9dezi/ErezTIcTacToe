@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 public class GameScreen extends AppCompatActivity {
 
@@ -41,19 +42,22 @@ public class GameScreen extends AppCompatActivity {
         cells = new ImageButton[9];
         for (int i = 0; i < cells.length; i++) {
             ImageButton cell = new ImageButton(this);
-            cell.setLayoutParams(new GridLayout.LayoutParams(
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams(
                     GridLayout.spec(GridLayout.UNDEFINED, 1f),
                     GridLayout.spec(GridLayout.UNDEFINED, 1f)
-            ));
-            cell.setBackground(getDrawable(R.drawable.box_bg));
-            cell.setOnClickListener(v -> playTurn(cell));
+            );
+            params.setMargins(30,30,30,30);
+            cell.setLayoutParams(params);
+            cell.setBackground(AppCompatResources.getDrawable(this, R.drawable.box_bg));
+            int finalI = i;
+            cell.setOnClickListener(v -> playTurn(finalI));
             cells[i] = cell;
             board.addView(cells[i]);
         }
     }
 
-    private void playTurn(ImageButton cell) {
-
+    private void playTurn(int i) {
+        Toast.makeText(this, "click" + i, Toast.LENGTH_SHORT).show();
     }
 
     private void restartGame() {

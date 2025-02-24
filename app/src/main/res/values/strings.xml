@@ -10,4 +10,9 @@
     <string name="new_password">new password</string>
     <string name="update_password">Update Password</string>
     <string name="turn">turn</string>
+    <string name="restart">restart</string>
+    <string name="wins">wins</string>
+    <string name="draws">draws</string>
+    <string name="losses">losses</string>
+
 </resources>
