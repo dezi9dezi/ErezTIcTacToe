@@ -2,7 +2,6 @@ package com.example.ereztictactoe;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,7 +19,7 @@ public class GameScreen extends AppCompatActivity {
 
     RadioGroup playerSelector;
     RadioButton x_button, o_button;
-    TextView curTurn;
+    TextView curTurn, wins, losses, draws;
     ImageButton restart;
     GridLayout board;
     User user;
@@ -55,6 +54,9 @@ public class GameScreen extends AppCompatActivity {
         state = new int[3][3];
         playerSign = -1;
         dbh = new DBhelper(GameScreen.this);
+        wins = findViewById(R.id.wins);
+        losses = findViewById(R.id.losses);
+        draws = findViewById(R.id.draws);
         createGame();
     }
 
@@ -71,13 +73,14 @@ public class GameScreen extends AppCompatActivity {
         cells[i][j].setEnabled(false);
 
         int res = checkGrid(state);
+
         if (res != 0 || isFull(state)) {
             for (int k = 0; k < state.length; k++) {
                 for (int h = 0; h < state.length; h++) {
                     cells[k][h].setEnabled(false);
                 }
             }
-            dbh.updateStats(user.getId(), res);
+            dbh.updateStats(user.getId(), res==0?"stats_draws":res==playerSign?"stats_wins":"stats_losses");
         } else {
             turn = -turn;
             curTurn.setCompoundDrawablesRelativeWithIntrinsicBounds(AppCompatResources.getDrawable(this, turn>0?R.drawable.ic_o:R.drawable.ic_x), null,null,null);
@@ -86,7 +89,6 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void cpuTurn() {
-        Log.d("hola", "---------------------------------------------------");
         int[] nextTurn = new int[2];
         int bestScore = Integer.MIN_VALUE;
         for (int i = 0; i < state.length; i++) {
@@ -96,7 +98,6 @@ public class GameScreen extends AppCompatActivity {
                     int score = minimax(state, playerSign, 1);
                     state[i][j] = 0;
                     if ((-playerSign)*score>bestScore) {
-                        Log.d("hola", "minimax: " + i + "," + j + " : " + bestScore + " -> " + (-playerSign)*score);
                         bestScore = (-playerSign)*score;
                         nextTurn = new int[]{i, j};
                     }
@@ -137,8 +138,10 @@ public class GameScreen extends AppCompatActivity {
     private int checkGrid(int[][] cur) {
 
         for (int i = 0; i < cur.length; i++) {
-            if (cur[i][1]==cur[i][2]&&cur[i][1]==cur[i][0]) return cur[i][1];
-            if (cur[1][i]==cur[2][i]&&cur[1][i]==cur[0][i]) return cur[1][i];
+            if (cur[i][i]!=0) {
+                if (cur[i][1] == cur[i][2] && cur[i][1] == cur[i][0]) return cur[i][1];
+                if (cur[1][i] == cur[2][i] && cur[1][i] == cur[0][i]) return cur[1][i];
+            }
         }
 
         if ((cur[1][1]==cur[2][2]&&cur[1][1]==cur[0][0]) || (cur[1][1]==cur[2][0]&&cur[1][1]==cur[0][2])) return cur[1][1];
@@ -146,9 +149,13 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void createGame() {
-        wins.setText(dbh.getWins(user.getId()));
-        losses.setText(dbh.getLosses(user.getId()));
-        draws.setText(dbh.getDraws(user.getId()));
+        String win, loss, draw;
+        win = "wins: " + dbh.getStat(user.getId(), "stats_wins");
+        loss = "losses: " + dbh.getStat(user.getId(), "stats_losses");
+        draw = "draws: " + dbh.getStat(user.getId(), "stats_draws");
+        wins.setText(win);
+        losses.setText(loss);
+        draws.setText(draw);
         board.removeAllViews();
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {

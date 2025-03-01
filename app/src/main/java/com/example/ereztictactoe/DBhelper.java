@@ -78,14 +78,14 @@ public class DBhelper extends SQLiteOpenHelper {
         return u;
     }
 
-    public boolean removeUser(long id) {
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.rawQuery("DELETE FROM " + USERS_TABLE + " WHERE " + USER_ID + " = " + id, null);
-        boolean b = cursor.moveToFirst();
-        db.close();
-        cursor.close();
-        return b;
-    }
+//    public boolean removeUser(long id) {
+//        SQLiteDatabase db = getWritableDatabase();
+//        Cursor cursor = db.rawQuery("DELETE FROM " + USERS_TABLE + " WHERE " + USER_ID + " = " + id, null);
+//        boolean b = cursor.moveToFirst();
+//        db.close();
+//        cursor.close();
+//        return b;
+//    }
 
     public boolean updateUser(User u, String newPassword) {
         SQLiteDatabase db = getWritableDatabase();
@@ -95,5 +95,24 @@ public class DBhelper extends SQLiteOpenHelper {
         db.close();
         return num==1;
     }
+
+    public void updateStats(long id, String res) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        int score = getStat(id, res) + 1;
+        cv.put(res, score);
+        db.update(STATS_TABLE , cv, STATS_USER_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public int getStat(long id, String res) {
+        SQLiteDatabase db = getReadableDatabase();
+        int r = -1;
+        Cursor c = db.rawQuery("SELECT * FROM " + STATS_TABLE + " WHERE " + STATS_USER_ID + " = " + id, null);
+        if ( c.moveToFirst() ) {
+            r = c.getInt(res.equals(STATS_WINS)?1:res.equals(STATS_LOSSES)?2:3);
+        }
+        c.close();
+        return r;
+    }
 }
-//font isnt case sensitive
