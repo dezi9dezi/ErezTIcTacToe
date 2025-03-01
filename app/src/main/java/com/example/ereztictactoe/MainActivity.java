@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startUI() {
+
         un = findViewById(R.id.username);
         pw = findViewById(R.id.password);
         login = findViewById(R.id.loginBTN);
@@ -31,10 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         login.setOnClickListener(login -> login());
         forgotPw.setOnClickListener(forgotPw -> forgotPassword());
+        forgotPw.setOnClickListener(forgotPw -> forgotPassword());
     }
 
     private void forgotPassword() {
-        Dialog fpDialog = new customDialog(MainActivity.this, dbh);
+        Dialog fpDialog = new changePassword(MainActivity.this, dbh);
         fpDialog.show();
     }
 

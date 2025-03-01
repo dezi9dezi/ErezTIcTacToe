@@ -48,6 +48,12 @@ public class DBhelper extends SQLiteOpenHelper {
         cv.put(USER_PASSWORD, u.getPassword());
         long insert = db.insert(USERS_TABLE, null, cv);
         u.setId(insert);
+        cv = new ContentValues();
+        cv.put(STATS_WINS,0);
+        cv.put(STATS_DRAWS,0);
+        cv.put(STATS_LOSSES,0);
+        cv.put(STATS_USER_ID,insert);
+        db.insert(STATS_TABLE, null, cv);
         db.close();
         return u;
     }

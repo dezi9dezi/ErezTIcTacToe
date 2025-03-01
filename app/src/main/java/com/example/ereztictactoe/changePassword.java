@@ -2,24 +2,23 @@ package com.example.ereztictactoe;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-public class customDialog extends Dialog {
+public class changePassword extends Dialog {
 
     Context ma;
     Button update;
     EditText userId, userUsername, userNewPassword;
     DBhelper dbh;
-    public customDialog(@NonNull Context context, DBhelper dbh) {
+    public changePassword(@NonNull Context context, DBhelper dbh) {
         super(context);
         ma = context;
         this.dbh = dbh;
-        setContentView(R.layout.dialog_layout);
+        setContentView(R.layout.change_password);
         setCancelable(true);
         update = findViewById(R.id.update_update_button);
         userId = findViewById(R.id.update_user_ID);

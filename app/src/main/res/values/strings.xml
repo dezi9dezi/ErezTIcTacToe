@@ -14,5 +14,7 @@
     <string name="wins">wins</string>
     <string name="draws">draws</string>
     <string name="losses">losses</string>
+    <string name="set_x">set x</string>
+    <string name="set_o">set o</string>
 
 </resources>
